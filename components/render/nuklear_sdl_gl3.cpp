@@ -22,12 +22,7 @@ static const struct nk_draw_vertex_layout_element vertex_layout[] =
     { NK_VERTEX_LAYOUT_END }
 };
 
-
-#ifdef __APPLE__
-  #define NK_SHADER_VERSION "#version 150\n"
-#else
-  #define NK_SHADER_VERSION "#version 300 es\n"
-#endif
+#define NK_SHADER_VERSION "#version 130\n"
 
 void nk_sdl_device_create(nk_gl_device& dev)
 {
