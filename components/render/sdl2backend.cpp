@@ -38,6 +38,11 @@
 #define MAX_VERTEX_MEMORY 512 * 1024
 #define MAX_ELEMENT_MEMORY 128 * 1024
 
+extern "C"
+{
+	__declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 0x00000001;
+	__declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+}
 
 namespace Render
 {
