@@ -1005,8 +1005,9 @@ namespace Render
         {
             for(int32_t y = 0; y < frame.mHeight; y++)
             {
-                if(frame[x][y].visible)
-                    setpixel(s, start_x+x, start_y+y, frame[x][y]);
+                auto &c = frame[x][y];
+                if(c.visible)
+                    setpixel(s, start_x+x, start_y+y, c);
             }
         }
     }
