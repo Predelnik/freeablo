@@ -73,7 +73,7 @@ if(UNIX)
 endif()
 
 if(MSVC)
-    set(FA_COMPILER_FLAGS "${FA_COMPILER_FLAGS} /W4 /D_CRT_SECURE_NO_WARNINGS /wd4244 /wd4100 /wd4611 /wd4458 /wd4459 /wd4127 /wd4800 /wd4267")
+    set(FA_COMPILER_FLAGS "${FA_COMPILER_FLAGS} /W4 /wd4244 /wd4100 /wd4611 /wd4458 /wd4459 /wd4127 /wd4800 /wd4267")
     # 4244 - e.g. 'argument': conversion from 'const long double' to 'double' -- boost headers
     # 4100 - unreferenced formal parameter -- boost headers
     # 4611 - interaction between '_setjmp' and C++ object destruction is non-portable -- savepng.cpp
@@ -84,6 +84,9 @@ if(MSVC)
     # 4800 - forcing value to bool, stupid warning
     set(FA_COMPILER_FLAGS "${FA_COMPILER_FLAGS} /w44062")
     # 4061 - not all enumerator values are handled by the switch statement
+    add_definitions (-D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS )
+    # SCL - because current boost is too old and emits this warning
+    # CRT - something in nuklear.h
     if (TREAT_WARNINGS_AS_ERRORS)
         set(FA_COMPILER_FLAGS "${FA_COMPILER_FLAGS} /WX")
     endif()
